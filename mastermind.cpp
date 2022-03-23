@@ -20,24 +20,22 @@ class Mastermind{
 	for(int j=0;j<5;j++){	
 	int aux;
 	cin>>vec2[j];
-//	vec2[j]=aux;
-//aux= -1;
 }
 }
 	void comparar(){
 	for(int i=0;i<5;i++){
 	  for(int j=0;j<5;j++){
-			cout<<"el numero"<<vec2[i]<<endl;
+			cout<<"El digito "<<vec2[i]<<" "<<endl;
 
 		if(vec1[i]==vec2[j]){
 
 			if(i==j){
-				cout<<i<<"Es la posicion correcta"<<endl;
+				cout<<"En la posicion "<<i<<" es correcto"<<endl;
 		}	else{
-				cout<<i<<"No es la posicion correcta"<<endl;}
+				cout<<"En la posicion "<<i<<"  no esta la posicion correcta"<<endl;}
 			}
 		else{
-			cout<<j<<"No es correcto"<<endl;}
+			cout<<"En la posicion "<<j<<" no es correcto"<<endl;}
 		}
 	   }
 	}
