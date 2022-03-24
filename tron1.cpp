@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <curses.h>
-
 struct Player {
     int x;
     int y;
@@ -8,7 +7,6 @@ struct Player {
     int dy;
     int score;
 };
-
 int maxX, maxY, gameover, quit = 0, i, j;
 int** memory;
 char ch = 0;
@@ -16,12 +14,10 @@ struct Player p1,p2;
 class tron{
 public:
 void check(){
-	// Constant movement
 	p1.x += p1.dx;
 	p1.y += p1.dy;
 	p2.x += p2.dx;
 	p2.y += p2.dy;
-	// Check for loss
 	if(p1.x < 0 || p1.x >= maxX || p1.y < 0 || p1.y >= maxY-1){
         beep();
 
@@ -119,7 +115,6 @@ void check(){
 	}
 	memory[p1.y][p1.x] = 1;
 	memory[p2.y][p2.x] = 1;
-	// Check for quit
 	if(ch == 27){
 		gameover = 1;
 		quit = 1;
@@ -189,22 +184,18 @@ int main(){
 		p2.dx = -1;
 		p2.dy = 0;
 		gameover = 0;
-		// Calloc memory array
 		getmaxyx(stdscr, maxY, maxX);
 		maxY++;
 		memory = (int**)calloc(maxY, sizeof(int*));
 		for(i = 0; i < maxY; i++) memory[i] = (int*)calloc(maxX, sizeof(int));
-		// Set p1 and p2 starting location
 		p1.x = maxX/4;
 		p1.y = maxY/2;
-
 		mvprintw(p1.y, p1.x, "#");
 		p2.x = maxX - maxX/4;
 		p2.y = maxY/2;
 
 		mvprintw(p2.y, p2.x, "!");
 		refresh();
-		// Play
 		while(!gameover){
 			timeout(60);
 			ch = getch();
@@ -215,10 +206,9 @@ int main(){
 			inicio.check();
 			refresh();
 		}
-		// Gameover
+
 		for(i = 0; i < maxY; i++) free(memory[i]);
 		free(memory);
-//	}
         endwin();
 	return 0;
 }
