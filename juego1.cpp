@@ -1,66 +1,89 @@
 #include <iostream>
-#include <string>
-#include <cstring> 
-#include <ncurses.h>
-#include <unistd.h>
-#include <vector>
+#include <stdlib.h>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
-class parametros{
-public:
-
-void movypant(){
-WINDOW *w;
-clear();
-int tecla;
-int max_x, max_y, pos_x, pos_y;
-bool fin = false;
-w = initscr();
-keypad(w, TRUE);
-noecho();
-nonl();
-curs_set(0);
-erase();
-getmaxyx(w, max_y, max_x);
-pos_x = max_x / 4;
-pos_y = max_y / 2;
-do
-{
-move(pos_y, pos_x);
-addch('#');
-refresh();
-tecla = getch();
-move(pos_y, pos_x);
-refresh();
-switch(tecla)
-{
-case KEY_UP:
-pos_y = (pos_y + (max_y - 1)) % max_y;
-break;
-case KEY_LEFT:
-pos_x = (pos_x + (max_x - 1)) % max_x;
-break;
-case KEY_RIGHT:
-pos_x = (pos_x + 1) % max_x;
-break;
-case KEY_DOWN:
-pos_y = (pos_y + 1) % max_y;
-break;
-case 27: // tecla ESC
-fin = true;
-break;
+class Mastermind{
+    public:
+	
+    int vec1[5];
+	int vec2[5];
+    void matriz(){
+	srand(time(NULL));
+        cout<<"Se ha generado el codigo de 5 digitos."<<endl;
+	for (int i=0;i<5;i++){
+	cin.get();
+	vec1[i]= (rand()%10);
+	cout<<vec1[i]<<endl;
+	}
+        cout<<"Ingrese el codigo de 5 digitos con 1 espacio entre cada uno."<<endl;
+	for(int j=0;j<5;j++){	
+	cin>>vec2[j];
 }
-}  while (!fin);
 }
+	void comparar(){
+	for(int i=0;i<5;i++){
+				cout<<"El digito "<<vec2[i]<<" "<<endl;
+			int aux=0;
+			int aux2=0;
+	  for(int j=0;j<5;j++){
 
+		if(vec1[j]==vec2[i]){
+			
+			if(i==j){
+				cout<<"En la posicion "<<i<<" es correcto"<<endl;
+				aux2=1;
+				rp=1;
+					}
+			if(j!=i)
+			{
+				aux=aux+1;
+			}
+			if(aux>0 and aux2==0)
+			{
+				cout<<"el numero "<<vec2[i]<<" se encuentra en la respuesta pero no en la posicion  "<<i<<endl;
+				aux2=1;
+			}
+							}
+		}
+		if(aux2==0)
+	cout<<"el numero ingresado en la posicion  "<<i<<"  no es parte de la respuesta"<<endl;
+	cout<<".................................................................................................................."<<endl;
+	   }
+	for(int k=0;k<5;k++){
+	cout<<"Ingrese nuevamente"<<endl;
+	int aux[k];
+	cin>>aux[k];
+	aux[k]=vec2[k];
 
+	 for(int i=0;i<5;i++){
+          for(int j=0;j<5;j++){
+                        cout<<"El digito "<<vec2[i]<<" "<<endl;
+
+                if(vec1[i]==aux[j]){
+
+                        if(i==j){
+                                cout<<"En la posicion "<<i<<" es correcto"<<endl;
+                }       else{
+                                cout<<"En la posicion "<<i<<"  no esta la posicion correcta"<<endl;}
+                        }
+                else{
+                        cout<<"En la posicion "<<j<<" no es correcto"<<endl;}
+                }
+        cout<<".................................................................................................................."<<endl;
+           }
+
+	}
+
+	}
+	
 };
 int main(){
-	initscr();
-	parametros juego;
-	juego.movypant();
-	endwin();
-	return 0;
+Mastermind my_juego;
+cout<<"BIENVENIDO A MASTERMIND CON MATRICES"<<endl<<"Las instrucciones son las siguientes:"<<endl;
+cout<<"1. Se generara un codigo de 5 numeros del 1 al 9."<<endl<<"2. Usted tendra 5 oportunidades para adivirarlo."<<endl;
+cout<<"3. Se corregira cada digito con el uso de posiciones de matrices independientemente"<<endl;
+my_juego.matriz();
+my_juego.comparar();
+return 0;
 }
-
-
-
