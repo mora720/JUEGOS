@@ -1,13 +1,13 @@
 //unir 
-#include<iostream>
-#include<string.h>
-#include<stdlib.h>
-#include<stdio.h>
-#include<math.h>
-#include <cstdlib>
-#include <time.h>
+#include <iostream>
 #include <stdlib.h>
-#include <curses.h>
+#include <time.h> //para numero random
+#include <string.h>
+#include <stdio.h>
+#include <stdio.h>
+#include <SFML/Graphics.hpp>
+#include <iomanip>
+#include <conio.h>
 
 #include<cstring>
 #include<unistd.h>
