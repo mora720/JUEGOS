@@ -18,49 +18,38 @@ class Mastermind{
 	}
         cout<<"Ingrese el codigo de 5 digitos con 1 espacio entre cada uno."<<endl;
 	for(int j=0;j<5;j++){	
+	int aux;
 	cin>>vec2[j];
 }
 }
 	void comparar(){
 	for(int i=0;i<5;i++){
-				cout<<"El digito "<<vec2[i]<<" "<<endl;
-			int aux=0;
-			int aux2=0;
 	  for(int j=0;j<5;j++){
+			cout<<"El digito "<<vec2[i]<<" "<<endl;
 
-		if(vec1[j]==vec2[i]){
-			
+		if(vec1[i]==vec2[j]){
+
 			if(i==j){
 				cout<<"En la posicion "<<i<<" es correcto"<<endl;
-				aux2=1;
-				rp=1;
-					}
-			if(j!=i)
-			{
-				aux=aux+1;
+		}	else{
+				cout<<"En la posicion "<<i<<"  no esta la posicion correcta"<<endl;}
 			}
-			if(aux>0 and aux2==0)
-			{
-				cout<<"el numero "<<vec2[i]<<" se encuentra en la respuesta pero no en la posicion  "<<i<<endl;
-				aux2=1;
-			}
-							}
+		else{
+			cout<<"En la posicion "<<j<<" no es correcto"<<endl;}
 		}
-		if(aux2==0)
-	cout<<"el numero ingresado en la posicion  "<<i<<"  no es parte de la respuesta"<<endl;
 	cout<<".................................................................................................................."<<endl;
 	   }
-	for(int k=0;k<5;k++){
+	int c=0;
+	while(c<=5){
 	cout<<"Ingrese nuevamente"<<endl;
-	int aux[k];
-	cin>>aux[k];
-	aux[k]=vec2[k];
-
+	for(int k=0;k<5;k++){
+		cin>>vec2[k];
+	}
 	 for(int i=0;i<5;i++){
           for(int j=0;j<5;j++){
                         cout<<"El digito "<<vec2[i]<<" "<<endl;
 
-                if(vec1[i]==aux[j]){
+                if(vec1[i]==vec2[j]){
 
                         if(i==j){
                                 cout<<"En la posicion "<<i<<" es correcto"<<endl;
@@ -70,11 +59,21 @@ class Mastermind{
                 else{
                         cout<<"En la posicion "<<j<<" no es correcto"<<endl;}
                 }
+
+	 }
         cout<<".................................................................................................................."<<endl;
-           }
-
+        }
+/*	if(vec2[1]==vec1[1] and vec2[2]==vec1[2] and vec2[3]==vec1[3] and vec2[4]==vec1[4] and vec2[5]==vec1[5]){
+		cout<<"Felidades usted gano"<<endl;
 	}
-
+	else if(c==5){
+		if(vec1[1]!=vec2[1] or vec1[2]!=vec2[2] or vec1[3]!=vec2[3] or vec1[4]!=vec2[4] or vec1[5]!=vec2[5]){
+			cout<<"Usted perdio"<<endl;
+		}
+*/
+//	}
+	c++;
+	
 	}
 	
 };
